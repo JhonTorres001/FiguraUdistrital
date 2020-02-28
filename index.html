@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>  
+    <div>   
+        <p>
+            <select id="figura">
+                <option value="Cuadrado">Cuadrado</option>
+                <option value="Circulo">Circulo</option>
+                <option value="Triangulo">Triangulo</option>
+                <option value="Rectangulo">Rectangulo</option>
+            </select>
+        </p>
+    </div>
+
+<br>
+<label>Altura:</label>
+<input type="text" id="pAltura"> </input>
+<br>
+<br>
+<label>Base:</label>
+<input type="text" id="pBase"> </input>
+<br>
+<br>
+<label>Radio:</label>
+<input type="text" id="pRadio"> </input>
+<br>
+<br>
+<label>Ancho:</label>
+<input type="text" id="pAncho"> </input>
+<br>
+<br>
+<label>Largo:</label>
+<input type="text" id="pLargo"> </input>
+
+<br>
+<br>
+
+<button name="button" id="btnCalcular" class ="btn" >Calcular</button>
+
+<br>
+<br>
+
+<label>Area:</label>
+<label id="resArea"></label>
+<br>
+<br>
+<label>Perimetro:</label>
+<label id="resPerimetro"></label>
+
+<br>
+<br>
+
+<canvas width="600" height="300" id="mipanel"></canvas>
+
+</body>
+<script>    
+
+    document.querySelector('#btnCalcular').addEventListener('click', function(e) {
+   
+    debugger
+    const Altura = document.getElementById("pAltura").value; 
+    const Base = document.getElementById("pBase").value;
+    const Radio = document.getElementById("pRadio").value;
+    const Ancho = document.getElementById("pAncho").value;
+    const Largo = document.getElementById("pLargo").value;
+    const ResultadoArea = document.getElementById("resArea");
+    const ResultadoPerimetro = document.getElementById("resPerimetro");
+    
+    debugger
+    e.preventDefault();
+    const x = document.getElementById("figura").value;
+        switch (x) {
+            case 'Cuadrado':            
+                ResultadoArea.innerHTML = Altura * Altura;
+                ResultadoPerimetro.innerHTML  =  (Altura * 4);
+
+            
+               
+              
+                var miLienzo = document.getElementById("mipanel");
+                var lapiz = miLienzo.getContext("2d");
+                // lapiz.clearRect(x, y, 600, 300);
+                lapiz.rect(30,5,Altura,Altura);
+                lapiz.stroke();
+
+
+
+                break;        
+            case 'Circulo':            
+                ResultadoArea.innerHTML = (Math.PI * Math.pow(Radio, 2));
+                ResultadoPerimetro.innerHTML  =  Math.PI * (2 * Radio);
+                var miLienzo = document.getElementById("mipanel");
+                var lapiz = miLienzo.getContext("2d");
+                lapiz.beginPath();	  
+                lapiz.arc(300,150,Radio, 0, 2*Math.PI);
+                lapiz.lineWidth = 5;
+                lapiz.stroke();
+
+                break;  
+            case 'Triangulo':            
+                ResultadoArea.innerHTML = Math.sqrt(Math.pow(Altura, 2) + Math.pow(Base, 2)) + (Altura + Base);
+                ResultadoPerimetro.innerHTML  =  (Altura * 4);
+
+                var miLienzo = document.getElementById("mipanel");
+                var lapiz = miLienzo.getContext("2d");
+                // Filled triangle
+      
+
+                // Stroked triangle
+                lapiz.fillStyle="rgb(255,0,0)";
+                lapiz.strokeStyle="rgb(0,0,255)";
+                lapiz.lineWidth=5;
+                lapiz.beginPath();
+                lapiz.moveTo(150,10);
+                lapiz.lineTo(10,290);
+                lapiz.lineTo(290,290);
+                lapiz.lineTo(150,10);
+                lapiz.fill();
+                lapiz.stroke();    
+
+                break;
+            case 'Rectangulo':            
+                ResultadoArea.innerHTML = (Altura * Base) ;
+                ResultadoPerimetro.innerHTML  =  ((Altura * 2) + (Base * 2));
+                break;    
+            default:
+                break;
+        }  
+});
+
+
+
+
+
+   
+
+ 
+
+</script>
+
+</html>
