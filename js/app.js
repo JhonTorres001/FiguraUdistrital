@@ -42,7 +42,7 @@ formulario.addEventListener('submit', (e) => {
                 lapiz.stroke();
                 break;  
             case 'Triangulo':            
-                ResultadoPerimetro.innerHTML = Math.sqrt(Math.pow(Altura, 2) + Math.pow(Base, 2)) + parseInt.(Altura) + parseInt.(Base);
+                ResultadoPerimetro.innerHTML = Math.sqrt(Math.pow(Altura, 2) + Math.pow(Base, 2)) + parseInt(Altura) + parseInt(Base);
                 ResultadoArea.innerHTML  =  (Altura * Base)/2;
                 // Stroked triangle
                 let height = 200 * Math.cos(Math.PI / 3);
